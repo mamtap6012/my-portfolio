@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navya — Case Study · Mamta Pandey</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      if (localStorage.getItem('theme') === 'dark')
+        document.documentElement.setAttribute('data-theme', 'dark');
+    })();
+  </script>
+  <style>
+    /* ── Case Study Page ── */
+    .cs-page {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 48px 96px;
+    }
+
+    .cs-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 56px;
+      transition: color var(--transition);
+    }
+    .cs-back:hover { color: var(--terracotta); }
+    .cs-back svg { transition: transform var(--transition); }
+    .cs-back:hover svg { transform: translateX(-3px); }
+
+    .cs-header { margin-bottom: 56px; }
+
+    .cs-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .cs-label-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      background: var(--sand);
+      border: 1px solid rgba(196,168,130,0.5);
+      border-radius: 999px;
+      padding: 3px 12px;
+    }
+
+    .cs-page-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 400;
+      color: var(--espresso);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .cs-page-subtitle {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .cs-divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--terracotta), var(--clay));
+      border-radius: 2px;
+      margin: 32px 0;
+    }
+
+    /* ── Body content ── */
+    .cs-body { display: flex; flex-direction: column; gap: 48px; }
+
+    .cs-section h2 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--espresso);
+      letter-spacing: -0.01em;
+      margin-bottom: 18px;
+    }
+    .cs-section h2::after {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--terracotta), var(--clay));
+      border-radius: 2px;
+      margin-top: 10px;
+    }
+
+    .cs-section p {
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .cs-section p:last-child { margin-bottom: 0; }
+
+    .cs-section strong {
+      font-weight: 600;
+      color: var(--espresso);
+    }
+
+    /* Insight callout */
+    .cs-callout {
+      background: var(--sand);
+      border-left: 3px solid var(--terracotta);
+      border-radius: 0 12px 12px 0;
+      padding: 20px 24px;
+      margin: 8px 0;
+    }
+    .cs-callout p {
+      font-size: 0.97rem;
+      font-style: italic;
+      color: var(--espresso);
+      margin: 0;
+      line-height: 1.75;
+    }
+
+    /* Bullet lists */
+    .cs-list {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cs-list li {
+      font-size: 0.97rem;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--muted);
+      padding-left: 20px;
+      position: relative;
+    }
+    .cs-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      opacity: 0.7;
+    }
+
+    /* Two-column built/cut grid */
+    .cs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 8px;
+    }
+    .cs-grid-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 22px;
+      box-shadow: 0 2px 4px rgba(44,31,20,.04), 0 6px 20px rgba(44,31,20,.07);
+    }
+    .cs-grid-card h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .cs-grid-card.built h4 { color: var(--terracotta); }
+    .cs-grid-card.cut h4   { color: var(--clay); }
+
+    /* Footer CTA */
+    .cs-footer {
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .cs-footer-meta {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--clay);
+      line-height: 1.7;
+    }
+    .cs-footer-meta a {
+      color: var(--terracotta);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+    .cs-footer-meta a:hover { color: var(--espresso); }
+
+    @media (max-width: 768px) {
+      .cs-page { padding: 48px 24px 72px; }
+      .cs-grid { grid-template-columns: 1fr; }
+      .cs-footer { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Page sections">
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#journey">Journey</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li><a href="index.html#casestudies">Case Studies</a></li>
+      <li><a href="mailto:mamta.p6012@gmail.com">Contact</a></li>
+    </ul>
+  </nav>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <span class="icon-sun">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </span>
+    <span class="icon-moon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </span>
+  </button>
+
+  <article class="cs-page">
+
+    <a class="cs-back" href="index.html#projects">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Projects
+    </a>
+
+    <header class="cs-header">
+      <div class="cs-label">
+        <span class="cs-label-tag">Case Study</span>
+        <span class="cs-label-tag">Health-Tech</span>
+        <span class="cs-label-tag">Buildathon Winner 🏆</span>
+      </div>
+      <h1 class="cs-page-title">Navya — Postpartum Care App</h1>
+      <p class="cs-page-subtitle">How a gap in my own postpartum experience became a buildathon-winning product — and what it's teaching me about building for real users in high-stakes moments.</p>
+      <div class="cs-divider"></div>
+    </header>
+
+    <div class="cs-body">
+
+      <div class="cs-section">
+        <h2>The Problem Nobody Was Solving</h2>
+        <p>There's a tracking app for every stage of a woman's reproductive journey. Period tracking. Pregnancy week-by-week. Parenting milestones. But the moment a baby is born, the mother disappears from the product map.</p>
+        <p>She's exhausted, recovering, and flooded with questions nobody prepared her for — and the apps that exist either ignore her entirely or bury her in forms and unclear flows with no clear path forward.</p>
+        <p>I lived this firsthand. I had tracked my entire pregnancy religiously with an app. The day my child was born, I opened it and found nothing. No guidance on what my body was doing. No answers to the questions piling up every hour.</p>
+        <div class="cs-callout">
+          <p>That gap became Navya.</p>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h2>Understanding the User</h2>
+        <p>Rather than structured interviews, we had real conversations — thirteen of them, with new mothers including myself. We weren't looking for feature requests. We were listening for friction, confusion, and the moments people felt most alone.</p>
+        <p><strong>What we heard consistently:</strong></p>
+        <ul class="cs-list">
+          <li>Breastfeeding was the single biggest challenge, especially for first-time mothers. No one had prepared them for how hard it would be or what "normal" actually looked like.</li>
+          <li>Mothers wanted one place — not five apps, not a Google search spiral, not contradictory advice from relatives. One clear, trustworthy source.</li>
+          <li>The support system was invisible in every existing product. Husbands and family members wanted to help but had no shared context. Everyone was operating off different information.</li>
+        </ul>
+        <div class="cs-callout">
+          <p>Postpartum confusion isn't just a mother's problem — it's a household problem. When the people around a new mother don't understand what she's going through, she has to explain herself while also recovering. That's an invisible tax nobody was addressing.</p>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h2>My Role</h2>
+        <p>I was the PM lead. I defined the problem space, shaped the product vision, ran the user conversations, prioritized what we'd build for the buildathon, and made the calls on what to cut.</p>
+      </div>
+
+      <div class="cs-section">
+        <h2>What We Built — and What We Cut</h2>
+        <p>Given buildathon constraints, we couldn't build everything. The prioritization question was: <em>what gives a new mother the most clarity with the least friction in her most exhausted moments?</em></p>
+        <div class="cs-grid">
+          <div class="cs-grid-card built">
+            <h4>Built</h4>
+            <ul class="cs-list">
+              <li><strong>Stage-by-stage guidance</strong> — surfaced at the right moment, not dumped all at once</li>
+              <li><strong>Breastfeeding support</strong> — practical, honest guidance for the most reported pain point</li>
+              <li><strong>Lochia tracking</strong> — helping mothers understand what's normal and when to be concerned</li>
+              <li><strong>Nutrition guidance</strong> — what to eat, what to avoid, and the reasoning behind it</li>
+              <li><strong>Shared access</strong> — partners and family could join, see the same information, and be genuinely useful</li>
+            </ul>
+          </div>
+          <div class="cs-grid-card cut">
+            <h4>Cut</h4>
+            <ul class="cs-list">
+              <li><strong>In-app chat / community</strong> — high effort, low immediacy</li>
+              <li><strong>Appointment scheduling</strong> — integration complexity</li>
+              <li><strong>Baby milestone tracking</strong> — shifts focus away from the mother; already solved elsewhere</li>
+            </ul>
+            <p style="margin-top:14px; font-size:0.85rem; font-style:italic;">Every feature we removed served the baby or the system — not the recovering mother herself.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h2>Why We Won</h2>
+        <p>The judges said they were amazed at the depth of thinking behind the app. In a field of solutions chasing novelty, Navya won because it solved a problem hiding in plain sight — one every new mother faces, and that no product had taken seriously.</p>
+        <div class="cs-callout">
+          <p>Most health apps treat the patient as a solo user. Navya treated recovery as something that happens in a household — and built for that reality. That reframe was uncommon enough to stand out.</p>
+        </div>
+      </div>
+
+      <div class="cs-section">
+        <h2>What's Next — Iteration 2 (US Market)</h2>
+        <p>Navya was built for India. The US market has different dynamics: different postpartum norms, different healthcare touchpoints, and a different relationship between new mothers and their OBs and pediatricians.</p>
+        <p>I'm currently working on the second iteration with two specific inputs:</p>
+        <ul class="cs-list">
+          <li><strong>Doctor-backed content</strong> — partnering with a practicing pediatrician who specializes in breastfeeding to validate guidance and bust the myths that circulate in parenting communities. A lot of what new mothers are told is wrong. V2 will be the app that tells them the truth.</li>
+          <li><strong>US market research</strong> — understanding how postpartum support systems differ, what role insurance and healthcare providers play, and where the biggest gaps remain.</li>
+        </ul>
+        <p>The core insight doesn't change. The mother is still being ignored. The product needs to get sharper, more trusted, and more clinically grounded to earn its place in the US market.</p>
+      </div>
+
+      <div class="cs-section">
+        <h2>What I'd Do Differently</h2>
+        <ul class="cs-list">
+          <li>Start the shared-access feature earlier in the research phase — it emerged late but became the most resonant idea</li>
+          <li>Test with fathers and family members directly, not just mothers reporting on their behalf</li>
+          <li>Define "success" more precisely before building — recovery outcomes, not just engagement metrics</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <footer class="cs-footer">
+      <div class="cs-footer-meta">
+        <div>Live app → <a href="https://postpartum-sooty.vercel.app/" target="_blank" rel="noopener noreferrer">postpartum-sooty.vercel.app</a></div>
+        <div>Status: Active — V2 in development for US market</div>
+      </div>
+      <a class="btn btn-resume" href="index.html#projects">← Back to Projects</a>
+    </footer>
+
+  </article>
+
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    toggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const next = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    });
+  </script>
+
+</body>
+</html>
